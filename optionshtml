@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="options.css">
+</head>
+
+<body>
+  <div class="grid-container">
+    <h1 class="heading">Options</h1>
+    <input id="checkbox" type="checkbox" /> Close pinned tabs
+    <div id="status"></div>
+    <button id="save">Save</button>
+  </div>
+</body>
+<script src="options.js"></script>
+
+</html>

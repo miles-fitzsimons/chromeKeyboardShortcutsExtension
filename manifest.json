@@ -1,0 +1,46 @@
+{
+  "name": "Chrome Keyboard Shortcuts",
+  "version": "0.0.1",
+  "description": "Adds keyboard shortcut for close tabs to the right?",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": ["declarativeContent", "storage"],
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/audrey16.png",
+      "32": "images/audrey32.png",
+      "48": "images/audrey48.png",
+      "128": "images/audrey128.png"
+    }
+  },
+  "icons": {
+    "16": "images/audrey16.png",
+    "32": "images/audrey32.png",
+    "48": "images/audrey48.png",
+    "128": "images/audrey128.png"
+  },
+  "commands": {
+    "close-tabs-to-the-right": {
+      "suggested_key": {
+        "default": "Alt+Shift+Right"
+      },
+      "description": "Close tabs to the right"
+    },
+    "close-tabs-to-the-left": {
+      "suggested_key": {
+        "default": "Alt+Shift+Left"
+      },
+      "description": "Close tabs to the left"
+    },
+    "close-other-tabs": {
+      "suggested_key": {
+        "default": "Alt+Shift+Up"
+      },
+      "description": "Close other tabs"
+    }
+  }
+}

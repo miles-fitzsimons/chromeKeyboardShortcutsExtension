@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  height: 250px;
+  width: 500px;
+}
+
+.grid-container {
+  align-items: center;
+  display: grid;
+  grid-template-areas:
+    "heading"
+    "bullets"
+    "checkbox"
+    "github";
+  grid-template-columns: 100%;
+  grid-template-rows: 15% auto 15% 15%;
+  height: 100%;
+  justify-items: center;
+}
+
+.heading {
+  font-size: 30px;
+  grid-area: heading;
+}
+
+.bullets {
+  align-self: start;
+  grid-area: bullets;
+  font-size: 20px;
+  justify-self: start;
+  list-style-type: square;
+}
+
+.bullet {
+  margin-bottom: 20px;
+}
+
+.shortcut {
+  font-weight: bold;
+}
+
+.checkbox {
+  grid-area: checkbox;
+}
+
+.github {
+  grid-area: github;
+}
