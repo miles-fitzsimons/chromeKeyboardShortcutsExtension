@@ -55,7 +55,5 @@ chrome.commands.onCommand.addListener(command => {
   });
 });
 
-// add ignore pins in options?
-
 // save on checkbox change
 // sort out multiple windows bug

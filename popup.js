@@ -1,16 +1,19 @@
 const save_options = () => {
   const closePinnedTabs = document.getElementById("checkbox").checked;
-  console.log("closepinned", closePinnedTabs);
 
   chrome.storage.sync.set(
     {
       closePinnedTabs
     },
     () => {
+      const checkboxAndLabel = document.getElementById("checkbox-and-label");
       const status = document.getElementById("status");
-      status.textContent = "Options saved";
+      checkboxAndLabel.style.display = "none";
+
+      status.style.display = "initial";
       setTimeout(() => {
-        status.textContent = "";
+        checkboxAndLabel.style.display = "initial";
+        status.style.display = "none";
       }, 1000);
     }
   );
@@ -22,7 +25,6 @@ const restore_options = () => {
       closePinnedTabs: true
     },
     items => {
-      console.log("restoring", items);
       document.getElementById("checkbox").checked = items.closePinnedTabs;
     }
   );
