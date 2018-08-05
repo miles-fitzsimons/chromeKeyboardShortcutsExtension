@@ -15,39 +15,50 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.commands.onCommand.addListener(command => {
   chrome.tabs.query({}, tabs => {
-    let currentTabIndex;
+    // let activeTabIndex;
     const tabsToClose = [];
-    tabs.forEach((_, index) => {
-      if (tabs[index].active) {
-        currentTabIndex = index;
+    // tabs.forEach((_, index) => {
+    //   if (tabs[index].active) {
+    //     activeTabIndex = index;
+    //   }
+    // });
+
+    const activeTabIndex = tabs.find(tab => tab.active === true).index;
+    console.log("active", activeTabIndex);
+
+    chrome.storage.sync.get("closePinnedTabs", result => {
+      const { closePinnedTabs } = result;
+      console.log("result", result, closePinnedTabs);
+      if (command === "close-tabs-to-the-right") {
+        for (let i = activeTabIndex + 1; i < tabs.length; i++) {
+          tabsToClose.push(tabs[i].id);
+        }
       }
+
+      if (command === "close-tabs-to-the-left") {
+        for (let i = 0; i < activeTabIndex; i++) {
+          const thisTab = tabs[i];
+          if (shouldTabBeClosed(closePinnedTabs, activeTabIndex, thisTab)) {
+            tabsToClose.push(thisTab.id);
+          }
+        }
+      }
+
+      if (command === "close-other-tabs") {
+        for (let i = 0; i < tabs.length; i++) {
+          const thisTab = tabs[i];
+          if (shouldTabBeClosed(closePinnedTabs, activeTabIndex, thisTab)) {
+            tabsToClose.push(thisTab.id);
+          }
+        }
+      }
+
+      chrome.tabs.remove(tabsToClose);
     });
-
-    if (command === "close-tabs-to-the-right") {
-      for (let i = currentTabIndex + 1; i < tabs.length; i++) {
-        tabsToClose.push(tabs[i].id);
-      }
-    }
-
-    if (command === "close-tabs-to-the-left") {
-      for (let i = 0; i < currentTabIndex; i++) {
-        if (!tabs[i].pinned) {
-          tabsToClose.push(tabs[i].id);
-        }
-      }
-    }
-
-    if (command === "close-other-tabs") {
-      for (let i = 0; i < tabs.length; i++) {
-        if (!tabs[i].pinned && i !== currentTabIndex) {
-          tabsToClose.push(tabs[i].id);
-        }
-      }
-    }
-
-    chrome.tabs.remove(tabsToClose);
   });
 });
 
 // shortcut for piining tab?
 // add ignore pins in options?
+
+// save on checkbox change

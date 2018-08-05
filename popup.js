@@ -1,10 +1,10 @@
 const save_options = () => {
-  const closePinnedPages = document.getElementById("checkbox").checked;
-  console.log("closepinned", closePinnedPages);
+  const closePinnedTabs = document.getElementById("checkbox").checked;
+  console.log("closepinned", closePinnedTabs);
 
   chrome.storage.sync.set(
     {
-      closePinnedPages: closePinnedPages
+      closePinnedTabs
     },
     () => {
       const status = document.getElementById("status");
@@ -16,6 +16,17 @@ const save_options = () => {
   );
 };
 
-// document.addEventListener("DOMContentLoaded", restore_options);
+const restore_options = () => {
+  chrome.storage.sync.get(
+    {
+      closePinnedTabs: true
+    },
+    items => {
+      console.log("restoring", items);
+      document.getElementById("checkbox").checked = items.closePinnedTabs;
+    }
+  );
+};
 
+document.addEventListener("DOMContentLoaded", restore_options);
 document.getElementById("save").addEventListener("click", save_options);
