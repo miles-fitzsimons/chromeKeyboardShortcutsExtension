@@ -15,20 +15,11 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.commands.onCommand.addListener(command => {
   chrome.tabs.query({}, tabs => {
-    // let activeTabIndex;
     const tabsToClose = [];
-    // tabs.forEach((_, index) => {
-    //   if (tabs[index].active) {
-    //     activeTabIndex = index;
-    //   }
-    // });
-
     const activeTabIndex = tabs.find(tab => tab.active === true).index;
-    console.log("active", activeTabIndex);
 
     chrome.storage.sync.get("closePinnedTabs", result => {
       const { closePinnedTabs } = result;
-      console.log("result", result, closePinnedTabs);
       if (command === "close-tabs-to-the-right") {
         for (let i = activeTabIndex + 1; i < tabs.length; i++) {
           tabsToClose.push(tabs[i].id);
@@ -53,12 +44,18 @@ chrome.commands.onCommand.addListener(command => {
         }
       }
 
+      if (command === "pin-current-tab") {
+        chrome.tabs.update(tabs[activeTabIndex].id, {
+          pinned: !tabs[activeTabIndex].pinned
+        });
+      }
+
       chrome.tabs.remove(tabsToClose);
     });
   });
 });
 
-// shortcut for piining tab?
 // add ignore pins in options?
 
 // save on checkbox change
+// sort out multiple windows bug
