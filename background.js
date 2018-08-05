@@ -4,7 +4,7 @@ chrome.runtime.onInstalled.addListener(() => {
       {
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlContains: "." }
+            pageUrl: { urlMatches: ".*" }
           })
         ],
         actions: [new chrome.declarativeContent.ShowPageAction()]
