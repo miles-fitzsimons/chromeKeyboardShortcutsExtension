@@ -20,6 +20,14 @@ const save_options = () => {
 };
 
 const restore_options = () => {
+  chrome.runtime.getPlatformInfo(platformInfo => {
+    Array.from(document.getElementsByClassName("alt-or-option")).forEach(
+      span => {
+        span.innerText = platformInfo.os === "mac" ? "Option" : "Alt";
+      }
+    );
+  });
+
   chrome.storage.sync.get(
     {
       closePinnedTabs: true
