@@ -2,7 +2,7 @@
   "name": "Close and Pin Tabs Keyboard Shortcuts",
   "version": "1.0.0",
   "description":
-    "Provides keyboard shortcuts for: 1) closing all tabs to the left of the current tab, 2) closing tabs to the right of the current tab, 3) closing all other tabs, and 4) pinning and unpinning the current tab. Supports ignoring or not ignoring pinned tabs.",
+    "Provides keyboard shortcuts for closing tabs to the left or right, closing all other tabs, and pinning current tab.",
   "manifest_version": 2,
   "background": {
     "scripts": ["background.js"],
