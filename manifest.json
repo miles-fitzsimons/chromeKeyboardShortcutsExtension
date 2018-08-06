@@ -1,7 +1,8 @@
 {
-  "name": "Chrome Keyboard Shortcuts",
-  "version": "0.0.1",
-  "description": "Adds keyboard shortcut for close tabs to the right?",
+  "name": "Close Tabs Keyboard Shortcuts",
+  "version": "1.0.0",
+  "description":
+    "Provides keyboard shortcuts for: 1) closing all tabs to the left of the current tab, 2) closing tabs to the right of the current tab, 3) closing all other tabs, and 4) pinning and unpinning the current tab. Supports ignoring or not ignoring pinned tabs.",
   "manifest_version": 2,
   "background": {
     "scripts": ["background.js", "/lib/shouldTabBeClosed.js"],
@@ -11,17 +12,17 @@
   "page_action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "images/audrey16.png",
-      "32": "images/audrey32.png",
-      "48": "images/audrey48.png",
-      "128": "images/audrey128.png"
+      "16": "images/arrows16.png",
+      "32": "images/arrows32.png",
+      "48": "images/arrows48.png",
+      "128": "images/arrows128.png"
     }
   },
   "icons": {
-    "16": "images/audrey16.png",
-    "32": "images/audrey32.png",
-    "48": "images/audrey48.png",
-    "128": "images/audrey128.png"
+    "16": "images/arrows16.png",
+    "32": "images/arrows32.png",
+    "48": "images/arrows48.png",
+    "128": "images/arrows128.png"
   },
   "commands": {
     "close-tabs-to-the-right": {
