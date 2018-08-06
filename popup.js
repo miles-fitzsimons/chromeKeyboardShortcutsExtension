@@ -28,14 +28,9 @@ const restore_options = () => {
     );
   });
 
-  chrome.storage.sync.get(
-    {
-      closePinnedTabs: true
-    },
-    items => {
-      document.getElementById("checkbox").checked = items.closePinnedTabs;
-    }
-  );
+  chrome.storage.sync.get(["closePinnedTabs"], items => {
+    document.getElementById("checkbox").checked = items.closePinnedTabs;
+  });
 };
 
 document.addEventListener("DOMContentLoaded", restore_options);
