@@ -1,6 +1,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  height: 24em;
+  height: 25em;
   width: 45em;
 }
 
@@ -18,21 +18,21 @@ body {
 }
 
 .heading {
-  font-size: 30px;
+  font-size: 10vh;
   grid-area: heading;
 }
 
 .bullets {
   align-self: start;
   grid-area: bullets;
-  font-size: 20px;
+  font-size: 7vh;
   justify-self: start;
   list-style-type: square;
   margin-bottom: 0;
 }
 
 .bullet {
-  margin-bottom: 20px;
+  margin-bottom: 5vh;
 }
 
 .shortcut {
@@ -40,7 +40,7 @@ body {
 }
 
 .checkbox {
-  font-size: 20px;
+  font-size: 7vh;
   grid-area: checkbox;
 }
 
